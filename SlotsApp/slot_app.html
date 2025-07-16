@@ -28,9 +28,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px; /* Space between sections */
+            /* New: Distribute space vertically to center reels */
+            justify-content: space-between;
+            /* Removed fixed gap to allow flex-grow spacers to work */
             width: 90%; /* Responsive width */
             max-width: 500px; /* Max width for desktop */
+            /* Enforce aspect ratio for a phone-like appearance on PC */
+            aspect-ratio: 9 / 16; /* Width to Height ratio (e.g., 9 units wide for every 16 units tall) */
+            max-height: 90vh; /* Ensure it doesn't get too tall on very large screens */
             position: relative; /* For absolute positioning of elements inside */
         }
 
@@ -288,6 +293,10 @@
             .slot-container {
                 padding: 20px;
                 gap: 20px;
+                width: 95%; /* Slightly more width on very small screens */
+                height: 95vh; /* Take up almost full height on mobile */
+                max-height: none; /* Remove max-height constraint on mobile */
+                aspect-ratio: unset; /* Remove aspect ratio constraint on mobile for better fit */
             }
             .reel {
                 width: 80px;
@@ -351,11 +360,16 @@
         <!-- Paytable button moved to top-left corner of the container -->
         <button id="paytableButton" class="paytable-button">?</button>
 
+        <!-- New flex-grow spacers to push reels to the vertical center -->
+        <div class="flex-grow-spacer"></div>
+
         <div class="reels-wrapper">
             <div id="reel1" class="reel">?</div>
             <div id="reel2" class="reel">?</div>
             <div id="reel3" class="reel">?</div>
         </div>
+
+        <div class="flex-grow-spacer"></div>
 
         <!-- Spin button and currency display grouped together at the bottom center -->
         <div class="spin-controls-group">
@@ -376,7 +390,7 @@
         <div class="modal-content">
             <button id="closePaytableButton" class="close-button">&times;</button>
             <h2>Paytable</h2>
-            <p><strong>🍒🍒🍒</strong> = 100 💰</p>
+            <p><strong>�🍒🍒</strong> = 100 💰</p>
             <p><strong>💎💎💎</strong> = 50 💰</p>
             <p><strong>⭐⭐⭐</strong> = 20 💰</p>
             <p><strong>🍀</strong> (any single) = Coin Flip Event!</p>
@@ -427,12 +441,12 @@
         const coinFlipModal = document.getElementById('coinFlipModal');
         const flipCoinButton = document.getElementById('flipCoinButton');
         const noThanksButton = document.getElementById('noThanksButton');
-        const coinDisplay = document.getElementById('coinDisplay'); // New: for coin flip visual
+        const coinDisplay = document.getElementById('coinDisplay');
         const miniGameModal = document.getElementById('miniGameModal');
         const miniGameTitle = document.getElementById('miniGameTitle');
         const miniGameMessage = document.getElementById('miniGameMessage');
         const miniGameGrid = document.getElementById('miniGameGrid');
-        const miniGameAccumulated = document.getElementById('miniGameAccumulated'); // New: for accumulated winnings
+        const miniGameAccumulated = document.getElementById('miniGameAccumulated');
 
         // Define the possible icons for the slot machine
         // Made '🤡' and '🍀' rarer by adding more common icons
@@ -808,3 +822,4 @@
     </script>
 </body>
 </html>
+�
