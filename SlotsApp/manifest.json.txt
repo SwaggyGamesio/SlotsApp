@@ -1,0 +1,21 @@
+    {
+      "name": "My Slot App",
+      "short_name": "Slots",
+      "start_url": "./slot_app.html",
+      "display": "standalone",
+      "background_color": "#1a202c",
+      "theme_color": "#2d3748",
+      "icons": [
+        {
+          "src": "icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        },
+        {
+          "src": "icon-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ]
+    }
+    
